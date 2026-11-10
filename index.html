@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Jelita Rhuslieta</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Pixelify+Sans:wght@500;700&family=Nunito:ital,wght@0,700;0,900;1,900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --y: #fff200;
+            --lime: #7ee02f;
+            --pink: #ff7ad9;
+            --blue: #2f2fd0;
+            --ink: #111
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            color: var(--ink);
+            line-height: 1.55;
+            background: linear-gradient(#fff200, #fffbd0 45%, #fff 80%) fixed;
+            overflow-x: hidden
+        }
+
+        .pix {
+            font-family: 'Pixelify Sans', monospace;
+            font-weight: 700
+        }
+
+        .page {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 16px 30px
+        }
+
+        svg {
+            display: block
+        }
+
+        .sp {
+            position: absolute;
+            fill: var(--c);
+            width: var(--s);
+            left: var(--x);
+            top: var(--y);
+            pointer-events: none
+        }
+
+        /* BAR ATAS (ala window profile) */
+        .bar {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            border: 3px solid var(--ink);
+            border-radius: 30px;
+            padding: 6px 16px;
+            margin: 18px 0
+        }
+
+        .bar i {
+            width: 14px;
+            height: 14px;
+            border: 2px solid var(--blue);
+            border-radius: 50%
+        }
+
+        .bar b {
+            border: 2px solid var(--blue);
+            color: var(--blue);
+            padding: 0 10px;
+            font-family: 'Pixelify Sans', monospace;
+            font-size: .9rem
+        }
+
+        .bar span {
+            margin-left: auto;
+            color: var(--blue);
+            font-family: 'Pixelify Sans', monospace
+        }
+
+        /* HERO */
+        .hero {
+            padding: 10px 0 26px
+        }
+
+        .oval {
+            display: inline-block;
+            background: radial-gradient(#c4ff82, #4fc414);
+            border: 2px solid var(--ink);
+            border-radius: 50%/60%;
+            padding: 2px 30px;
+            font-style: italic;
+            font-weight: 900;
+            font-size: 1.6rem;
+            transform: rotate(-4deg)
+        }
+
+        h1 {
+            font-family: 'Pixelify Sans', monospace;
+            font-size: clamp(2.4rem, 8vw, 5rem);
+            line-height: 1.05;
+            margin: .15em 0;
+            color: var(--pink);
+            -webkit-text-stroke: 3px var(--ink);
+            paint-order: stroke fill;
+            text-shadow: 5px 5px 0 var(--ink);
+            overflow-wrap: anywhere
+        }
+
+        .sub {
+            display: inline-block;
+            background: #fff;
+            border: 2px solid var(--ink);
+            border-radius: 24px;
+            padding: 4px 18px
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+            gap: 24px;
+            align-items: start
+        }
+
+        @media(max-width:800px) {
+            .grid {
+                grid-template-columns: 1fr
+            }
+        }
+
+        /* ID CARD */
+        .idcard {
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(#bcd8ff, #eef6ff);
+            border: 3px solid var(--ink);
+            border-radius: 18px;
+            padding: 14px;
+            box-shadow: 6px 6px 0 var(--ink)
+        }
+
+        .idcard:before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(#fff 2px, transparent 2.2px) 0 0/13px 13px;
+            opacity: .7
+        }
+
+        .idcard>* {
+            position: relative
+        }
+
+        .idhead {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px
+        }
+
+        .logo {
+            width: 42px;
+            height: 42px;
+            background: var(--y);
+            border: 2px solid var(--ink);
+            border-radius: 8px;
+            padding: 3px
+        }
+
+        .idname {
+            font-style: italic;
+            font-weight: 900;
+            font-size: 1.7rem;
+            color: #fff;
+            -webkit-text-stroke: 2px var(--blue);
+            paint-order: stroke fill
+        }
+
+        .tag {
+            margin-left: auto;
+            background: radial-gradient(#c4ff82, #4fc414);
+            border: 2px solid var(--ink);
+            border-radius: 50%/60%;
+            padding: 0 14px;
+            font-size: .85rem
+        }
+
+        .idbody {
+            display: grid;
+            grid-template-columns: 118px 1fr;
+            gap: 12px
+        }
+
+        .photo {
+            position: relative;
+            height: 150px;
+            background: var(--blue);
+            border: 2px solid var(--ink);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .photo svg {
+            width: 90%;
+            height: 85%;
+            fill: #a9bcff;
+        }
+
+        .photo img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(1) contrast(1.2);
+            mix-blend-mode: screen;
+        }
+
+        .photo::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(rgba(255, 255, 255, .35) 1.4px, transparent 1.6px) 0 0 / 7px 7px;
+            pointer-events: none;
+        }
+
+        .f {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px 10px;
+            align-content: start
+        }
+
+        .f small {
+            display: block;
+            color: var(--blue);
+            font-family: 'Pixelify Sans', monospace;
+            font-size: .8rem;
+            line-height: 1.1
+        }
+
+        .f div {
+            font-size: .85rem;
+            line-height: 1.2;
+            overflow-wrap: anywhere;
+            text-transform: uppercase
+        }
+
+        .btns {
+            display: flex;
+            gap: 8px;
+            margin-top: 12px
+        }
+
+        .btns span {
+            flex: 1;
+            text-align: center;
+            font-size: .75rem;
+            border: 1px solid #666;
+            padding: 1px
+        }
+
+        /* TEKS */
+        .paper {
+            background: #fff;
+            border: 3px solid var(--ink);
+            border-radius: 16px;
+            padding: 20px 22px;
+            box-shadow: 6px 6px 0 var(--ink)
+        }
+
+        h2 {
+            font-family: 'Pixelify Sans', monospace;
+            color: var(--blue);
+            font-size: 1.9rem;
+            margin: 0 0 .4em;
+            line-height: 1.1
+        }
+
+        .paper p {
+            margin: 0 0 .9em
+        }
+
+        .paper p:last-child {
+            margin: 0
+        }
+
+        .paper b {
+            background: linear-gradient(transparent 55%, #ffd6f5 55%)
+        }
+
+        .sec {
+            margin-top: 34px
+        }
+
+        /* PONSEL (INTERAKSI JS) */
+        .phone {
+            width: 210px;
+            margin: 0 auto;
+            background: linear-gradient(#6a7380, #323841);
+            border: 3px solid var(--ink);
+            border-radius: 34px 34px 44px 44px;
+            padding: 16px 14px 18px;
+            box-shadow: 4px 4px 0 var(--ink)
+        }
+
+        .spk {
+            width: 50px;
+            height: 6px;
+            background: #1b1f25;
+            border-radius: 6px;
+            margin: 0 auto 10px
+        }
+
+        .lcd {
+            background: repeating-linear-gradient(#cfee8a 0 3px, #bfe277 3px 4px);
+            border: 3px solid var(--ink);
+            border-radius: 10px;
+            padding: 8px 10px;
+            color: #1c3a0d;
+            min-height: 150px;
+            font-family: 'Pixelify Sans', monospace
+        }
+
+        .lcd small {
+            display: block;
+            font-size: .7rem;
+            letter-spacing: .08em;
+            border-bottom: 2px solid #1c3a0d;
+            margin-bottom: 6px
+        }
+
+        #layar {
+            font-size: 1.05rem;
+            line-height: 1.2;
+            min-height: 3.6em
+        }
+
+        #waktu {
+            font-size: .72rem;
+            line-height: 1.25;
+            margin-top: 6px
+        }
+
+        #hitung {
+            font-size: .75rem;
+            margin-top: 6px
+        }
+
+        .go {
+            display: block;
+            margin: 14px auto 10px;
+            font: inherit;
+            font-weight: 900;
+            font-size: .95rem;
+            cursor: pointer;
+            color: var(--ink);
+            background: radial-gradient(#e2ff9e, #6cd21a);
+            border: 3px solid var(--ink);
+            border-radius: 50%/60%;
+            padding: 6px 22px;
+            box-shadow: 0 4px 0 var(--ink)
+        }
+
+        .go:hover {
+            background: radial-gradient(#ffe0f6, var(--pink))
+        }
+
+        .go:active {
+            transform: translateY(3px);
+            box-shadow: 0 1px 0 var(--ink)
+        }
+
+        .go:focus-visible {
+            outline: 3px solid var(--y);
+            outline-offset: 3px
+        }
+
+        .keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px
+        }
+
+        .keypad span {
+            height: 16px;
+            border-radius: 50%/60%;
+            background: linear-gradient(#e4e8ee, #9aa3b0);
+            border: 2px solid var(--ink)
+        }
+
+
+        .stage {
+            position: relative;
+            max-width: 420px;
+            margin: 0 auto;
+            padding: 10px 0;
+            display: flex;
+            justify-content: center
+        }
+
+        .bn {
+            position: absolute;
+            left: 0;
+            bottom: 4px;
+            width: 92px;
+            height: 92px;
+            transform: rotate(-10deg)
+        }
+
+        .note {
+            text-align: center;
+            margin: 14px 0 0
+        }
+
+        /* FOOTER (keyboard) */
+        footer {
+            margin-top: 40px;
+            border-top: 3px solid var(--ink);
+            padding: 22px 16px 18px;
+            text-align: center;
+            background: linear-gradient(#f2f4ef 0, #f2f4ef 44%, #dcf8b4 44%, #7ee02f 100%)
+        }
+
+        .pad {
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto;
+            align-items: center;
+            gap: 18px;
+            max-width: 1000px;
+            margin: 0 auto
+        }
+
+        .jyl,
+        .jyr {
+            display: flex;
+            flex-direction: column;
+            gap: 14px
+        }
+
+        .jyl .jy:nth-child(2) {
+            margin-left: -14px
+        }
+
+        .jyr .jy:nth-child(2) {
+            margin-left: 14px
+        }
+
+        .jy {
+            display: block;
+            width: 96px;
+            height: 34px;
+            border-radius: 50%;
+            background: radial-gradient(ellipse at 40% 28%, var(--c2), var(--c) 70%);
+            border: 0;
+            box-shadow: 0 7px 0 var(--ink)
+        }
+
+        .kb {
+            display: grid;
+            grid-template-columns: minmax(0, 10fr) minmax(0, 3fr) minmax(0, 1.25fr);
+            gap: 14px;
+            padding: 12px;
+            background: linear-gradient(#fafafa, #e6e6e6);
+            border: 2px solid #8a8f88;
+            border-radius: 12px;
+            box-shadow: inset 0 0 0 3px #fff
+        }
+
+        .kg {
+            display: grid;
+            grid-template-columns: repeat(var(--n), minmax(0, 1fr));
+            gap: 5px
+        }
+
+        .k {
+            height: clamp(18px, 3.2vw, 28px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(.5rem, 1.5vw, .8rem);
+            font-weight: 700;
+            color: #222;
+            background: linear-gradient(#fff, #e4e4e4);
+            border: 1.5px solid #6d6d6d;
+            border-radius: 4px;
+            box-shadow: 0 1.5px 0 #9a9a9a
+        }
+
+        .k.y {
+            background: linear-gradient(#fff27a, #f0d92f)
+        }
+
+        .k.r {
+            background: linear-gradient(#ff5a4d, #e01f14);
+            color: #7a0a04
+        }
+
+        .k.g {
+            background: linear-gradient(#5cf05c, #1fc41f)
+        }
+
+        .ind {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 12px;
+            width: min(320px, 86%);
+            margin: 26px auto 0;
+            padding: 14px 10px;
+            background: linear-gradient(#c8f5a0, #9be863);
+            border: 2px solid #4e8f26;
+            border-radius: 14px;
+            box-shadow: inset 0 2px 0 rgba(255, 255, 255, .7)
+        }
+
+        .ind i {
+            width: clamp(24px, 7vw, 36px);
+            height: clamp(24px, 7vw, 36px);
+            border-radius: 50%;
+            border: 2px solid #8a8f88;
+            background: radial-gradient(circle at 40% 30%, #fff, #e9e9e9)
+        }
+
+        .ind i.on {
+            border-color: #1a8a1a;
+            background: radial-gradient(circle at 40% 30%, #9cff9c, #22c622)
+        }
+
+        .cr {
+            margin: 16px 0 0;
+            color: var(--ink);
+            font-size: .95rem
+        }
+
+        @media(max-width:760px) {
+            .pad {
+                grid-template-columns: 1fr;
+                gap: 12px
+            }
+
+            .jyl,
+            .jyr {
+                flex-direction: row;
+                justify-content: center;
+                gap: 16px
+            }
+
+            .jyl .jy:nth-child(2),
+            .jyr .jy:nth-child(2) {
+                margin: 0
+            }
+
+            .jy {
+                width: 70px;
+                height: 26px
+            }
+
+            .jyr {
+                order: 3
+            }
+
+            .kb {
+                gap: 8px;
+                padding: 8px
+            }
+        }
+    </style>
+
+    <!-- SCRIPT DI HEAD, PEMANGGILAN FUNGSI (EVENT) DI BODY -->
+    <script>
+        // Variabel global
+        var klik = 0;
+        var pesan = [
+            "The first step is always the hardest. If you're trying, you're already doing it -Hanni-",
+            "There’s a ton of ways to make a difference, and wearing cool NewJeans is one of them.",
+            "It's okay to make mistakes. That's how I learn and grow -Danielle-",
+            "Keep calm, and Be Bunnies :D",
+            "NEWJEANS NEVER DIE!!",
+            "Don’t be blue!",
+            "Nothing changes if you don't change"
+        ];
+
+        // Fungsi yang dipanggil saat tombol diklik (event onclick)
+        function kirimPesan() {
+            var sekarang = new Date();                                   // objek Date
+            var jam = sekarang.toLocaleTimeString("id-ID");              // metode
+            var tgl = sekarang.toLocaleDateString("id-ID", {weekday: "long", day: "numeric", month: "long", year: "numeric"});
+
+            klik = klik + 1;
+            // mengubah properti textContent milik objek elemen
+            document.getElementById("layar").textContent = pesan[klik % pesan.length];
+            document.getElementById("waktu").textContent = tgl + ", " + jam;
+            document.getElementById("hitung").textContent = "Pesan ke-" + klik;
+        }
+
+    </script>
+</head>
+
+<body>
+
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="star" viewBox="0 0 24 24">
+            <path d="M12 0C12.8 7 17 11.2 24 12 17 12.8 12.8 17 12 24 11.2 17 7 12.8 0 12 7 11.2 11.2 7 12 0Z" />
+        </symbol>
+        <symbol id="person" viewBox="0 0 100 100">
+            <circle cx="50" cy="34" r="19" />
+            <path d="M12 100C12 70 28 58 50 58S88 70 88 100Z" />
+        </symbol>
+        <symbol id="bunny" viewBox="0 0 100 100">
+            <g fill="#fff" stroke="#2f2fd0" stroke-width="3" stroke-linejoin="round">
+                <path d="M30 48C18 22 22 4 33 5S48 26 45 48Z" />
+                <path d="M70 48C82 22 78 4 67 5S52 26 55 48Z" />
+                <ellipse cx="50" cy="68" rx="36" ry="28" />
+            </g>
+            <circle cx="37" cy="66" r="3.5" fill="#2f2fd0" />
+            <circle cx="63" cy="66" r="3.5" fill="#2f2fd0" />
+            <ellipse cx="50" cy="74" rx="4" ry="3" fill="#ff7ad9" />
+            <path d="M14 70L30 72M14 78L30 76M86 70L70 72M86 78L70 76" stroke="#2f2fd0" stroke-width="2" fill="none" />
+        </symbol>
+    </svg>
+
+    <div class="page">
+        <svg class="sp" style="--x:2%;--y:120px;--s:30px;--c:#7ee02f" aria-hidden="true">
+            <use href="#star" />
+        </svg>
+        <svg class="sp" style="--x:90%;--y:190px;--s:36px;--c:#ff7ad9" aria-hidden="true">
+            <use href="#star" />
+        </svg>
+        <svg class="sp" style="--x:48%;--y:34px;--s:22px;--c:#2f2fd0" aria-hidden="true">
+            <use href="#star" />
+        </svg>
+
+        <div class="bar" aria-hidden="true"><i></i><i></i><i></i><b>NWJNS.kr</b><span>ID: 0722</span></div>
+
+        <!-- ===== JUDUL HALAMAN ===== -->
+        <header class="hero">
+            <span class="oval">Attention!</span>
+            <h1>Hi it's me, Jelita Rhuslieta</h1>
+            <p class="sub">Oh my, oh my God, <span id="mood">단 너뿐이야</span></p>
+        </header>
+
+        <div class="grid">
+            <!-- ID CARD -->
+            <div class="idcard">
+                <div class="idhead">
+                    <svg class="logo" aria-hidden="true">
+                        <use href="#bunny" />
+                    </svg>
+                    <span class="idname">NEWJEANS</span>
+                    <span class="tag">ID Card</span>
+                </div>
+                <div class="idbody">
+                    <div class="photo"><svg aria-hidden="true">
+                            <use href="#person" />
+                        </svg><img src="image/foto.jpg" alt="Foto Nama Mahasiswa" onerror="this.remove()"></div>
+                    <div class="f">
+                        <div><small>name</small>Jelita Rhuslieta</div>
+                        <div><small>team</small>Bunnies</div>
+                        <div><small>nickname</small>Je</div>
+                        <div><small>bias</small>Pham Hanni</div>
+                    </div>
+                </div>
+                <div class="btns" aria-hidden="true"><span style="background:#ccc">Dedicated</span><span
+                        style="background:#8fb0ff">for Bunnies</span></div>
+            </div>
+
+            <!-- ===== TEKS: 1 HEADING + 3 PARAGRAF ===== -->
+            <article class="paper">
+                <h2>Hi, Bunnies!</h2>
+                <p>Perkenalkan, aku <b>Jelita Rhuslieta</b>, mahasiswa Teknologi Bandung yang lagi belajar Pemrograman
+                    Web 1. Halaman ini aku buat sebagai tugas. Aku sudah lama jadi Bunnies (sebutan untuk penggemar
+                    NewJeans), makanya
+                    aku pilih mereka sebagai tema halaman ini</p>
+                <h3>Kenapa NewJeans?</h3>
+                <p>Awalnya aku suka design mereka yang <b>aesthetic</b> dengan nuansa Y2K-nya, dan juga lagunya. Palet
+                    warna dan design halaman ini
+                    aku ambil dari personal colour mereka dan design mereka di social media.</p>
+                <p>Tapi alasan aku bertahan jauh lebih dari sekadar <b>aesthetic</b>. Buatku, mereka
+                    contoh perempuan muda yang berani. Waktu mereka memilih bersuara soal
+                    perlakuan agensi yang tidak adil, aku kaget, tapi juga kagum. Hanni bahkan
+                    berbicara langsung di Majelis Nasional Korea pada Oktober 2024, dan terkadang dia selalu menjadi
+                    icon dari kalimat <b>"Hidup Perempuan Yang Melawan"</b>. Dari situ
+                    aku belajar: <b>diam bukan satu-satunya pilihan.</p>
+                <h3>Untuk para Perempuan</h3>
+                <p>Kisah Hanni dan NewJeans mengingatkanku pada kata Malala Yousafzai <i>"We realize the importance of
+                        our voices only when we are
+                        silenced."</i> Kita baru sadar betapa berharganya suara kita justru saat ada
+                    yang mencoba membungkamnya. Itulah kenapa keberanian mereka terasa begitu
+                    dekat denganku. Hillary Clinton pernah bilang, <i>"Human rights are women's
+                        rights, and women's rights are human rights,"</i> artinya memperjuangkan hak
+                    perempuan itu bukan hal kecil, tapi bagian dari memperjuangkan kemanusiaan.
+                    Dari tanah kita sendiri, R.A. Kartini sudah lebih dulu menyalakan harapan
+                    lewat kumpulan suratnya, <i>Habis Gelap Terbitlah Terang</i>. Buatku, ketiganya
+                    punya pesan yang sama: perempuan berhak bersuara, dan suara itu layak
+                    didengar.</p>
+            </article>
+        </div>
+
+        <!-- INTERAKSI JAVASCRIPT -->
+        <section class="sec">
+            <div class="stage">
+                <svg class="sp" style="--x:14%;--y:6%;--s:26px;--c:#ff7ad9" aria-hidden="true">
+                    <use href="#star" />
+                </svg>
+                <svg class="sp" style="--x:84%;--y:18%;--s:34px;--c:#2f2fd0" aria-hidden="true">
+                    <use href="#star" />
+                </svg>
+                <svg class="sp" style="--x:80%;--y:80%;--s:24px;--c:#7ee02f" aria-hidden="true">
+                    <use href="#star" />
+                </svg>
+                <svg class="bn" aria-hidden="true">
+                    <use href="#bunny" />
+                </svg>
+                <div class="phone">
+                    <div class="spk" aria-hidden="true"></div>
+                    <div class="lcd" aria-live="polite">
+                        <small>PHONING</small>
+                        <div id="layar">Tekan tombol hijau di bawah.</div>
+                        <div id="waktu">Tanggal dan jam muncul di sini.</div>
+                        <div id="hitung">Pesan ke-0</div>
+                    </div>
+                    <button type="button" class="go" onclick="kirimPesan()">Attention!</button>
+                    <div class="keypad" aria-hidden="true">
+                        <span></span><span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                </div>
+            </div>
+            <p class="note">Klik <b>Attention!</b> untuk mengganti pesan di layar.</p>
+        </section>
+    </div>
+
+    <footer aria-label="Footer">
+        <div class="pad" aria-hidden="true">
+            <div class="jyl"><i class="jy" style="--c:#24c824;--c2:#8bf08b"></i><i class="jy"
+                    style="--c:#e3231a;--c2:#ff7b70"></i></div>
+            <div class="kb">
+                <div class="kg" style="--n:10"><span class="k">!</span><span class="k">@</span><span
+                        class="k">#</span><span class="k">$</span><span class="k">%</span><span class="k">^</span><span
+                        class="k">&</span><span class="k">*</span><span class="k">(</span><span class="k">)</span><span
+                        class="k">ㅂ</span><span class="k">ㅈ</span><span class="k">ㄷ</span><span class="k">ㄱ</span><span
+                        class="k">ㅅ</span><span class="k">ㅛ</span><span class="k">ㅕ</span><span class="k">ㅑ</span><span
+                        class="k">ㅐ</span><span class="k">ㅔ</span><span class="k">ㅁ</span><span class="k">ㄴ</span><span
+                        class="k">ㅇ</span><span class="k">ㄹ</span><span class="k">ㅎ</span><span class="k">ㅗ</span><span
+                        class="k">ㅓ</span><span class="k">ㅏ</span><span class="k">ㅣ</span><span class="k">;</span><span
+                        class="k">ㅋ</span><span class="k">ㅌ</span><span class="k">ㅊ</span><span class="k">ㅍ</span><span
+                        class="k">ㅠ</span><span class="k">ㅜ</span><span class="k">ㅡ</span><span class="k">,</span><span
+                        class="k">.</span><span class="k">/</span></div>
+                <div class="kg" style="--n:3"><span class="k">1</span><span class="k">2</span><span
+                        class="k">3</span><span class="k">4</span><span class="k">5</span><span class="k">6</span><span
+                        class="k">7</span><span class="k">8</span><span class="k">9</span><span class="k">*</span><span
+                        class="k">0</span><span class="k">#</span></div>
+                <div class="kg" style="--n:1"><span class="k y">&lt;</span><span class="k r">X</span><span
+                        class="k g">O</span><span class="k"></span></div>
+            </div>
+            <div class="jyr"><i class="jy" style="--c:#1d2fd8;--c2:#6f7cff"></i><i class="jy"
+                    style="--c:#ffdc00;--c2:#fff58a"></i></div>
+        </div>
+        <div class="ind" aria-hidden="true"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+        <p class="pix cr">Tugas Pemrograman Web 1 · Jelita Rhuslieta</p>
+    </footer>
+
+</body>
+
+</html>
