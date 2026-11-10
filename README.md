@@ -13,19 +13,10 @@ Halaman web ini dibuat dengan HTML, CSS, dan JavaScript dalam satu file `index.h
 - Elemen desain: warna latar gradasi dan warna teks
 - Interaksi JavaScript: tombol **Attention!** mengubah teks dan menampilkan tanggal serta jam
 
-## Struktur Folder
-​```
-index.html
-README.md
-image/
-  foto.jpg
-  tampilan-awal.png
-  setelah-klik.png
-​```
-
 ## Screenshot
-### Tampilan awal
+### Tampilan awal 
 ![Tampilan awal](image/tampilan-awal.png)
-
+![Tampilan awal](image/tampilan-awal-2.png)
+![Tampilan awal](image/tampilan-awal-3.png)
 ### Setelah tombol ditekan
 ![Setelah tombol ditekan](image/setelah-klik.png)
