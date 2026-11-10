@@ -7,6 +7,9 @@
 ## Deskripsi
 Halaman web ini dibuat dengan HTML, CSS, dan JavaScript dalam satu file `index.html`.
 
+## Bisa diakses melalui github pages
+https://rhuslietaj.github.io/tugas-web1-bunnies.card/
+
 ## Syarat yang Dipenuhi
 - Judul halaman berisi nama mahasiswa
 - Teks: 1 heading dan 3 paragraf
