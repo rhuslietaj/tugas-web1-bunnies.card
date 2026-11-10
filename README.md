@@ -21,5 +21,5 @@ Halaman web ini dibuat dengan HTML, CSS, dan JavaScript dalam satu file `index.h
 ### Setelah tombol ditekan
 ![Setelah tombol ditekan](image/setelah-klik.png)
 ### Tampilan di HP
-![Tampilan HP](image/tampilan-HP.jpeg)
+![Tampilan HP](image/tampilan-hp.jpeg)
 ![Tampilan HP](image/setelah-klik-hp.jpeg)
