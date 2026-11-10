@@ -38,7 +38,7 @@
 
         .page {
             position: relative;
-            max-width: 1000px;
+            max-width: 560px;
             margin: 0 auto;
             padding: 0 16px 30px
         }
@@ -128,15 +128,9 @@
 
         .grid {
             display: grid;
-            grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+            grid-template-columns: 1fr;
             gap: 24px;
             align-items: start
-        }
-
-        @media(max-width:800px) {
-            .grid {
-                grid-template-columns: 1fr
-            }
         }
 
         /* ID CARD */
@@ -210,13 +204,17 @@
             display: flex;
             align-items: flex-end;
             justify-content: center;
-            overflow: hidden;
+            overflow: hidden
         }
 
         .photo svg {
             width: 90%;
             height: 85%;
-            fill: #a9bcff;
+            fill: #a9bcff
+        }
+
+        .photo:has(img) svg {
+            display: none
         }
 
         .photo img {
@@ -226,15 +224,15 @@
             height: 100%;
             object-fit: cover;
             filter: grayscale(1) contrast(1.2);
-            mix-blend-mode: screen;
+            mix-blend-mode: screen
         }
 
-        .photo::after {
+        .photo:after {
             content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(rgba(255, 255, 255, .35) 1.4px, transparent 1.6px) 0 0 / 7px 7px;
-            pointer-events: none;
+            background: radial-gradient(rgba(255, 255, 255, .35) 1.4px, transparent 1.6px) 0 0/7px 7px;
+            pointer-events: none
         }
 
         .f {
@@ -548,34 +546,42 @@
 
         @media(max-width:760px) {
             .pad {
-                grid-template-columns: 1fr;
-                gap: 12px
+                gap: 6px
             }
 
             .jyl,
             .jyr {
-                flex-direction: row;
-                justify-content: center;
-                gap: 16px
+                gap: 10px
             }
 
-            .jyl .jy:nth-child(2),
+            .jyl .jy:nth-child(2) {
+                margin-left: -6px
+            }
+
             .jyr .jy:nth-child(2) {
-                margin: 0
+                margin-left: 6px
             }
 
             .jy {
-                width: 70px;
-                height: 26px
-            }
-
-            .jyr {
-                order: 3
+                width: 42px;
+                height: 15px;
+                box-shadow: 0 4px 0 var(--ink)
             }
 
             .kb {
-                gap: 8px;
-                padding: 8px
+                gap: 5px;
+                padding: 6px
+            }
+
+            .kg {
+                gap: 3px
+            }
+
+            .k {
+                height: 15px;
+                font-size: .45rem;
+                border-width: 1px;
+                border-radius: 3px
             }
         }
     </style>
@@ -598,7 +604,7 @@
         function kirimPesan() {
             var sekarang = new Date();                                   // objek Date
             var jam = sekarang.toLocaleTimeString("id-ID");              // metode
-            var tgl = sekarang.toLocaleDateString("id-ID", {weekday: "long", day: "numeric", month: "long", year: "numeric"});
+            var tgl = sekarang.toLocaleDateString("id-ID", { weekday: "long", day: "numeric", month: "long", year: "numeric" });
 
             klik = klik + 1;
             // mengubah properti textContent milik objek elemen
@@ -649,8 +655,8 @@
         <!-- ===== JUDUL HALAMAN ===== -->
         <header class="hero">
             <span class="oval">Attention!</span>
-            <h1>Hi it's me, Jelita Rhuslieta</h1>
-            <p class="sub">Oh my, oh my God, <span id="mood">단 너뿐이야</span></p>
+            <h1>Hi, it's me Jelita Rhuslieta</h1>
+            <p class="sub">Halaman Bunnies · <span id="mood">Mode: santai</span></p>
         </header>
 
         <div class="grid">
@@ -671,7 +677,7 @@
                         <div><small>name</small>Jelita Rhuslieta</div>
                         <div><small>team</small>Bunnies</div>
                         <div><small>nickname</small>Je</div>
-                        <div><small>bias</small>Pham Hanni</div>
+                        <div><small>bias</small>Kim Minji</div>
                     </div>
                 </div>
                 <div class="btns" aria-hidden="true"><span style="background:#ccc">Dedicated</span><span
@@ -685,7 +691,7 @@
                     Web 1. Halaman ini aku buat sebagai tugas. Aku sudah lama jadi Bunnies (sebutan untuk penggemar
                     NewJeans), makanya
                     aku pilih mereka sebagai tema halaman ini</p>
-                <h3>Kenapa NewJeans?</h3>
+                <h2>Kenapa NewJeans?</h2>
                 <p>Awalnya aku suka design mereka yang <b>aesthetic</b> dengan nuansa Y2K-nya, dan juga lagunya. Palet
                     warna dan design halaman ini
                     aku ambil dari personal colour mereka dan design mereka di social media.</p>
@@ -694,8 +700,8 @@
                     perlakuan agensi yang tidak adil, aku kaget, tapi juga kagum. Hanni bahkan
                     berbicara langsung di Majelis Nasional Korea pada Oktober 2024, dan terkadang dia selalu menjadi
                     icon dari kalimat <b>"Hidup Perempuan Yang Melawan"</b>. Dari situ
-                    aku belajar: <b>diam bukan satu-satunya pilihan.</p>
-                <h3>Untuk para Perempuan</h3>
+                    aku belajar: <b>diam bukan satu-satunya pilihan.</b></p>
+                <h2>Untuk para Perempuan</h2>
                 <p>Kisah Hanni dan NewJeans mengingatkanku pada kata Malala Yousafzai <i>"We realize the importance of
                         our voices only when we are
                         silenced."</i> Kita baru sadar betapa berharganya suara kita justru saat ada
@@ -705,12 +711,12 @@
                     perempuan itu bukan hal kecil, tapi bagian dari memperjuangkan kemanusiaan.
                     Dari tanah kita sendiri, R.A. Kartini sudah lebih dulu menyalakan harapan
                     lewat kumpulan suratnya, <i>Habis Gelap Terbitlah Terang</i>. Buatku, ketiganya
-                    punya pesan yang sama: perempuan berhak bersuara, dan suara itu layak
-                    didengar.</p>
+                    punya pesan yang sama: <b>perempuan berhak bersuara, dan suara itu layak
+                    didengar.</b></p>
             </article>
         </div>
 
-        <!-- INTERAKSI JAVASCRIPT -->
+        <!-- ===== INTERAKSI JAVASCRIPT ===== -->
         <section class="sec">
             <div class="stage">
                 <svg class="sp" style="--x:14%;--y:6%;--s:26px;--c:#ff7ad9" aria-hidden="true">
@@ -739,7 +745,7 @@
                     </div>
                 </div>
             </div>
-            <p class="note">Klik <b>Attention!</b> untuk mengganti pesan di layar.</p>
+            <p class="note">Klik <b>Attention!</b> untuk menampilkan pesan di layar.</p>
         </section>
     </div>
 
