@@ -20,3 +20,6 @@ Halaman web ini dibuat dengan HTML, CSS, dan JavaScript dalam satu file `index.h
 ![Tampilan awal](image/tampilan-awal-3.png)
 ### Setelah tombol ditekan
 ![Setelah tombol ditekan](image/setelah-klik.png)
+### Tampilan di HP
+![Tampilan HP](image/tampilan-HP.jpeg)
+![Tampilan HP](image/setelah-klik-hp.jpeg)
