@@ -1,4 +1,4 @@
-# Tugas Pemrograman Web 1: Halaman Web Satu File
+# Tugas Pemrograman Web 1
 
 **Nama:** Jelita Rhuslieta
 **NIM:** 24552011371
